@@ -59,3 +59,15 @@ export interface Drink {
   strCreativeCommonsConfirmed: string;
   dateModified: string | null;
 }
+
+export interface NormalizedDrink {
+  id: string;
+  name: string
+  category: string | null;
+  dateModified: string | null;
+  drinkThumb: string | null;
+  isAlcoholic: boolean | null;
+  glass: string | null;
+  instruction: string | null; // first available instruction (any language)
+  ingredients: Array<{ ingredient: string; measure: string | null }>;
+}

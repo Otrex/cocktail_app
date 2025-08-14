@@ -1,5 +1,5 @@
 import type { Any } from "@/lib/types";
-import LoadingImage from "@/assets/images/Photo.gif";
+import LoadingImage from "@/assets/images/drink_in_glass.gif";
 import FallbackImage from "@/assets/images/drink_image.png";
 import React, {
   useEffect,

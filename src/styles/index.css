@@ -131,6 +131,12 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 14px;
+  }
+}
+
 .dev,
 .dev *:not(.ex-dev) {
   @apply !outline outline-red-500/30;
@@ -142,17 +148,17 @@
 
 .hide-horizontal-scrollbar {
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .hide-horizontal-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .hide-scrollbar-show-on-hover {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .hide-scrollbar-show-on-hover::-webkit-scrollbar {
@@ -166,14 +172,29 @@
 
 .hide-scrollbar-show-on-hover:hover::-webkit-scrollbar {
   display: block;
-  height: 12px;
+  height: 5px;
 }
 
 .hide-scrollbar-show-on-hover:hover::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 6px;
 }
 
 .hide-scrollbar-show-on-hover:hover::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.fade-in {
+  --animate-delay: 0s;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+  animation-delay: var(--animate-delay);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
