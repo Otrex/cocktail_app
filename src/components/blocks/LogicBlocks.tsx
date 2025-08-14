@@ -20,16 +20,6 @@ export const IfElse = ({
   elseChildren?: React.ReactNode;
 }) => (condition ? children : fallback || elseChildren);
 
-export const IfElseIf = ({
-  condition,
-  children,
-  elseChildren,
-}: {
-  condition: boolean;
-  children: React.ReactNode;
-  elseChildren: React.ReactNode;
-}) => (condition ? children : elseChildren);
-
 export const For = <T,>({
   each,
   render,
@@ -52,14 +42,6 @@ export const For = <T,>({
     {emptyState && Object.entries(each).length === 0 && emptyState}
   </>
 );
-
-export const Unless = ({
-  condition,
-  children,
-}: {
-  condition: boolean;
-  children: React.ReactNode;
-}) => (condition ? null : children);
 
 interface GeneralLoaderProps<T = Any> {
   isLoading: boolean;

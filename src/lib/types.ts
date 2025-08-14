@@ -68,6 +68,11 @@ export interface NormalizedDrink {
   drinkThumb: string | null;
   isAlcoholic: boolean | null;
   glass: string | null;
+  image: {
+    source: string | null,
+    attribution: string | null
+  },
+  creativeCommonsConfirmed: string | 'Yes' | 'No'
   instruction: string | null; // first available instruction (any language)
   ingredients: Array<{ ingredient: string; measure: string | null }>;
 }

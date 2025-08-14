@@ -41,6 +41,49 @@ export function debounce<T extends (...args: Any[]) => Any>(
   } as (...args: Parameters<T>) => void;
 }
 
+export function slug(input: string) {
+  return input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+export function titleCase(s: string) {
+  return s
+    .split(/\s+/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+export function generateGradient(start: string, end: string, steps: number) {
+  const startRGB = hexToRgb(start);
+  const endRGB = hexToRgb(end);
+  const colors = [];
+
+  for (let i = 0; i < steps; i++) {
+    const r = Math.round(startRGB.r + (endRGB.r - startRGB.r) * (i / (steps - 1)));
+    const g = Math.round(startRGB.g + (endRGB.g - startRGB.g) * (i / (steps - 1)));
+    const b = Math.round(startRGB.b + (endRGB.b - startRGB.b) * (i / (steps - 1)));
+    colors.push(rgbToHex(r, g, b));
+  }
+  return colors;
+}
+
+
+function hexToRgb(hex: string) {
+  hex = hex.replace("#", "");
+  if (hex.length === 3) {
+    hex = hex.split("").map(c => c + c).join("");
+  }
+  const num = parseInt(hex, 16);
+  return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
+}
+
+export function rgbToHex(r: number, g: number, b: number) {
+  return "#" + [r, g, b].map(x => x.toString(16).padStart(2, "0")).join("");
+}
+
+
 export function normalizeDrink(drink: Drink): NormalizedDrink {
   const get = (k: string) => (drink?.[k as keyof typeof drink] ?? null) as string | null;
   const str = (v: unknown) => (typeof v === "string" ? v.trim() : null);
@@ -95,6 +138,11 @@ export function normalizeDrink(drink: Drink): NormalizedDrink {
     glass,
     instruction,
     ingredients,
+    creativeCommonsConfirmed: drink?.['strCreativeCommonsConfirmed'] ?? 'No',
+    image: {
+      source: drink?.['strImageSource'] ?? null,
+      attribution: drink?.['strImageAttribution'] ?? null
+    }
   };
 }
 

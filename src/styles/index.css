@@ -129,6 +129,22 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  :root {
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+  }
+
+  .dark {
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -136,7 +152,7 @@
     font-size: 14px;
   }
 }
-
+/* For my development purposes */
 .dev,
 .dev *:not(.ex-dev) {
   @apply !outline outline-red-500/30;
@@ -154,33 +170,6 @@
 
 .hide-horizontal-scrollbar::-webkit-scrollbar {
   display: none;
-}
-
-.hide-scrollbar-show-on-hover {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.hide-scrollbar-show-on-hover::-webkit-scrollbar {
-  display: none;
-}
-
-.hide-scrollbar-show-on-hover:hover {
-  scrollbar-width: thin;
-  -ms-overflow-style: auto;
-}
-
-.hide-scrollbar-show-on-hover:hover::-webkit-scrollbar {
-  display: block;
-  height: 5px;
-}
-
-.hide-scrollbar-show-on-hover:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.hide-scrollbar-show-on-hover:hover::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .fade-in {

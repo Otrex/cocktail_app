@@ -19,6 +19,7 @@ import { useFavorites } from "./contexts/FavoritesContext";
 import { useGetCocktailsQuery } from "./services/cocktail";
 import useUrlState from "./hooks/useUrlState";
 import useDebouncedState from "./hooks/useDebouncedState";
+import { PieCharts } from "./components/charts/PieCharts";
 
 const CocktailLoader = AsyncLoader<NormalizedDrink[]>;
 
@@ -58,6 +59,21 @@ export default function App() {
         </section>
       </If>
 
+      <section data-name="charts" className="mb-5">
+        <h2 className="font-bold mb-3 text-xl">Statistics</h2>
+        <div className="flex flex-row gap-5">
+          <div className="border w-full">
+            <PieCharts drinks={data || []} type="glass" />
+          </div>
+          <div className="border w-full">
+            <PieCharts drinks={data || []} type="alcoholic" />
+          </div>
+          <div className="border w-full">
+            <PieCharts drinks={data || []} type="category" />
+          </div>
+        </div>
+      </section>
+
       <section data-name="filters" className="relative z-[1] translate-y-[1px]">
         <FilterBlock
           search={search}
@@ -75,9 +91,9 @@ export default function App() {
           <div>Total Results: {(data || []).length}</div>
         </div>
         <CocktailLoader
+          data={data || []}
           isError={isError}
           isLoading={isFetching}
-          data={data || []}
           hasData={(d) => !!d.length}
           loadingComponent={<CocktailsSkeleton />}
           errorComponent={<CocktailErrorBlock />}
