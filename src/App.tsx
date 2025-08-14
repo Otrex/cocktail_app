@@ -40,7 +40,7 @@ function App() {
       </section>
       <section data-name="results" className="border relative z-[0] p-4">
         <CocktailLoader
-          data={[]}
+          data={testData.drinks}
           isLoading={false}
           isError={false}
           hasData={(d) => !!d.length}
