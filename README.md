@@ -15,6 +15,9 @@ This project uses the following packages:
 - RTK Query
 - Shadcn / Shadcn Io
 
+> This project is also hosted on my render account.
+> Visit https://cocktail-app-89qk.onrender.com to preview
+
 ## Requirements
 
 To run this project locally, you'll need to have the following
