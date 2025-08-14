@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import type { Drink, NormalizedDrink } from "./types";
+import type { Any, Drink, NormalizedDrink } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -25,6 +25,20 @@ export function toQueryParams({
   }
 
   return params.toString();
+}
+
+export function debounce<T extends (...args: Any[]) => Any>(
+  fn: T,
+  delay = 300
+) {
+  let timer: ReturnType<typeof setTimeout> | null;
+
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  } as (...args: Parameters<T>) => void;
 }
 
 export function normalizeDrink(drink: Drink): NormalizedDrink {

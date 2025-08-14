@@ -10,6 +10,7 @@ export const cocktailApi = createApi({
   }),
   endpoints: (builder) => ({
     getCocktails: builder.query<NormalizedDrink[], string>({
+      keepUnusedDataFor: 30,
       query: (queryString) => `search.php${queryString ? `?${queryString}` : ''}`,
       transformResponse: (response: DrinksResponse) => {
         if (!response) return [];

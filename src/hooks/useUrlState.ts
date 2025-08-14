@@ -1,8 +1,9 @@
+import { isBrowser } from '@/lib/utils';
 import { useState, useEffect, useCallback, type Dispatch, type SetStateAction } from 'react';
 
 export default function useUrlState<T>(key: string, defaultValue: T): [T, Dispatch<SetStateAction<T>>] {
   const getInitialValue = (): T => {
-    if (typeof window === 'undefined') {
+    if (!isBrowser()) {
       return defaultValue;
     }
 
@@ -22,7 +23,7 @@ export default function useUrlState<T>(key: string, defaultValue: T): [T, Dispat
 
   const [state, setState] = useState(getInitialValue);
   const updateUrl = useCallback((newValue: T) => {
-    if (typeof window === 'undefined') {
+    if (!isBrowser()) {
       return;
     }
 

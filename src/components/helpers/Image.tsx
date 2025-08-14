@@ -1,12 +1,5 @@
-import type { Any } from "@/lib/types";
-import LoadingImage from "@/assets/images/drink_in_glass.gif";
 import FallbackImage from "@/assets/images/drink_image.png";
-import React, {
-  useEffect,
-  useState,
-  forwardRef,
-  type ImgHTMLAttributes,
-} from "react";
+import { forwardRef, type ImgHTMLAttributes } from "react";
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
@@ -16,52 +9,19 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 
 const AppImage = forwardRef<HTMLImageElement, ImageProps>(
   (
-    {
-      src,
-      loadingSrc = LoadingImage,
-      fallbackSrc = FallbackImage,
-      onLoad,
-      onError,
-      alt,
-      ...rest
-    },
+    { src, fallbackSrc = FallbackImage, onLoad, onError, alt, ...rest },
     ref
   ) => {
-    const [currentSrc, setCurrentSrc] = useState<string>(loadingSrc);
-
-    useEffect(() => {
-      let cancelled = false;
-      setCurrentSrc(loadingSrc);
-      const img = new Image();
-      img.src = src;
-      const handleSuccess = () => {
-        if (cancelled) return;
-        setCurrentSrc(src);
-      };
-      const handleError = () => {
-        if (cancelled) return;
-        setCurrentSrc(fallbackSrc);
-      };
-
-      if ("decode" in img && typeof (img as Any).decode === "function") {
-        (img as Any).decode().then(handleSuccess).catch(handleError);
-      } else {
-        img.onload = handleSuccess;
-        img.onerror = handleError;
-      }
-
-      return () => {
-        cancelled = true;
-      };
-    }, [src, loadingSrc, fallbackSrc]);
-
     return (
       <img
         ref={ref}
         alt={alt}
-        src={currentSrc}
+        src={src}
         onLoad={(e) => onLoad?.(e)}
         onError={(e) => {
+          if (e.target) {
+            (e.target as HTMLImageElement).src = fallbackSrc;
+          }
           onError?.(e);
         }}
         {...rest}

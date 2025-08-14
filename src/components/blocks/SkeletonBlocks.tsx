@@ -1,4 +1,3 @@
-import React from "react";
 import { For } from "./LogicBlocks";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -24,7 +23,7 @@ export const CocktailsSkeleton = () => {
       <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
         <For
           each={Array.from({ length: 6 })}
-          render={() => <CocktailSkeleton />}
+          render={(_, key) => <CocktailSkeleton key={key} />}
         />
       </div>
     </>

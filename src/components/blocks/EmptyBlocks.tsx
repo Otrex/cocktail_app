@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Martini, SearchX, Sparkles } from "lucide-react";
 import {
   Card,

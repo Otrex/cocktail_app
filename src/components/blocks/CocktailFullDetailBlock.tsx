@@ -83,7 +83,7 @@ export function CocktailFullDetailBlock({ drink }: Props) {
             <section>
               <h2 className="text-lg font-semibold mb-2">Instructions</h2>
               <IfElse
-                condition={!instruction}
+                condition={!!instruction}
                 fallback={
                   <p className="text-zinc-500">No instructions available.</p>
                 }

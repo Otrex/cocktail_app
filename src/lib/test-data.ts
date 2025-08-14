@@ -17,7 +17,7 @@ export default {
       "strInstructionsIT": "Versare tutti gli ingredienti in uno shaker, mescolare e servire con ghiaccio in un bicchiere freddo.",
       "strInstructionsZH-HANS": null,
       "strInstructionsZH-HANT": null,
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jg",
       "strIngredient1": "Gin",
       "strIngredient2": "Grand Marnier",
       "strIngredient3": "Lemon Juice",

@@ -9,35 +9,34 @@ import FilterBlock from "./components/blocks/FilterBlock";
 import AsyncLoader, { For, If } from "./components/blocks/LogicBlocks";
 import type { NormalizedDrink } from "./lib/types";
 import CocktailCard from "./components/cards/CocktailCard";
-import _testData from "./lib/test-data";
 
 import { CocktailsSkeleton } from "./components/blocks/SkeletonBlocks";
 import { CocktailErrorBlock } from "./components/blocks/ErrorBlocks";
 import { CocktailEmptyBlock } from "./components/blocks/EmptyBlocks";
 import FavouritesBlock from "./components/blocks/FavouriteBlock";
-import { normalizeDrink, toQueryParams } from "./lib/utils";
+import { toQueryParams } from "./lib/utils";
 import { useFavorites } from "./contexts/FavoritesContext";
 import { useGetCocktailsQuery } from "./services/cocktail";
 import useUrlState from "./hooks/useUrlState";
+import useDebouncedState from "./hooks/useDebouncedState";
 
 const CocktailLoader = AsyncLoader<NormalizedDrink[]>;
-
-const testData = _testData.drinks.map((drink) => normalizeDrink(drink));
 
 export default function App() {
   const { isFavorite, toggleFavorite, favorites } = useFavorites();
   const [firstLetter, setFirstLetter] = useUrlState("first-letter", "A");
   const [search, setSearch] = useUrlState("search", "");
+  const debouncedSearch = useDebouncedState(search, 500);
   const { data, isFetching, isError } = useGetCocktailsQuery(
     toQueryParams({
+      search: debouncedSearch.length >= 3 ? debouncedSearch : "",
       firstLetter,
-      search,
     })
   );
 
   return (
-    <main className="main-container sm:py-10">
-      <section data-name="breadcrumb" className="mb-5">
+    <main className="main-container py-5 sm:py-10">
+      <section data-name="breadcrumb" className="mb-8">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -73,7 +72,7 @@ export default function App() {
       >
         <div className="flex justify-between">
           <h2 className="font-bold mb-3 text-xl">Cocktails</h2>
-          <div>Total Results: {testData.length}</div>
+          <div>Total Results: {(data || []).length}</div>
         </div>
         <CocktailLoader
           isError={isError}

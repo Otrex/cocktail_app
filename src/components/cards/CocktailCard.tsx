@@ -4,7 +4,12 @@ import { IconButton } from "../ui/shadcn-io/icon-button";
 import { Heart } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { CocktailFullDetailBlock } from "../blocks/CocktailFullDetailBlock";
 
 export interface IProps {
@@ -38,6 +43,7 @@ export default function CocktailCard({
             >
               <AppImage
                 src={item.drinkThumb!}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div
@@ -58,8 +64,8 @@ export default function CocktailCard({
           </div>
           <div
             className={cn(
-              "border h-full w-full flex flex-col justify-between",
-              horizontal ? "border-l-0" : "border-t-0"
+              "border h-full w-full flex flex-col justify-between "
+              // horizontal ? "border-l-0" : "border-t-0"
             )}
           >
             <div className="p-4">
@@ -74,7 +80,11 @@ export default function CocktailCard({
           </div>
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-4xl overflow-y-auto">
+      <DialogContent
+        aria-describedby={"cocktail full details"}
+        className="sm:max-w-4xl overflow-y-auto"
+      >
+        <DialogTitle hidden></DialogTitle>
         <CocktailFullDetailBlock drink={item} />
       </DialogContent>
     </Dialog>
