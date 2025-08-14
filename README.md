@@ -1,69 +1,82 @@
-# React + TypeScript + Vite
+# Cocktail Land
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a projects that uses the https://www.thecocktaildb.com/api.php to allow you to search for your favourite cocktail.
+it allows you to do the following:
 
-Currently, two official plugins are available:
+- Search for cocktails
+  - By name
+  - By first letter
+- Add cocktails to your favourite list
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project uses the following packages:
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- RTK Query
+- Shadcn / Shadcn Io
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Requirements
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+To run this project locally, you'll need to have the following
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- NodeJs (preferrablly version 22 and above)
+- Yarn (but any other package manage will do)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Steps to running the project
+
+Once you have your NodeJS setup on your PC or server, Next you'll need to pull the code from the repository to your local device. To do this you can either download the code or just use the github cloning command.
+To use the github command, run:
+
+```
+git clone <the-repo-url>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Next, install the dependencies by running the following command:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+npm install
+```
+
+or
+
+```
+yarn
+```
+
+After that, you can then run the project in developement mode using the command:
+
+```
+npm run dev
+```
+
+or
+
+```
+yarn dev
+```
+
+Another good option is to run it using the preview command. but for you to use this first run the build command:
+
+```
+yarn build
+```
+
+or
+
+```
+npm run build
+```
+
+before running the command
+
+```
+yarn preview
+```
+
+or
+
+```
+npm run preview
+```
+
+After that, you'll see the link to the preview url. It's usually `http://localhost:5173`. Click on it or copy the link and paste on your browser URL bar to preview

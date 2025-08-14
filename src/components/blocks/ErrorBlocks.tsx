@@ -1,4 +1,3 @@
-import React from "react";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { AlertCircleIcon } from "lucide-react";
 import { Button } from "../ui/button";
