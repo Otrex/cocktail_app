@@ -23,7 +23,10 @@ export const CocktailEmptyBlock = ({
   onRetry,
 }: CocktailEmptyStateProps) => {
   return (
-    <div className="flex min-h-[60vh] items-center justify-center p-4">
+    <div
+      data-testid="cocktails-empty"
+      className="flex min-h-[60vh] items-center justify-center p-4"
+    >
       <div className="w-full max-w-xl">
         <Card className="border-none shadow-none">
           <CardHeader className="text-center">

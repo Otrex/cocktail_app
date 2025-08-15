@@ -29,6 +29,7 @@ export default function CocktailCard({
     <Dialog>
       <DialogTrigger asChild>
         <div
+          data-testid="cocktail-card"
           className={cn(
             "flex justify-between fade-in",
             horizontal ? "flex-row" : "flex-col"

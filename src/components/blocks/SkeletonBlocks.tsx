@@ -20,7 +20,10 @@ export const CocktailSkeleton = () => {
 export const CocktailsSkeleton = () => {
   return (
     <>
-      <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+      <div
+        data-testid="cocktails-skeleton"
+        className="grid gap-4 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4"
+      >
         <For
           each={Array.from({ length: 6 })}
           render={(_, key) => <CocktailSkeleton key={key} />}
