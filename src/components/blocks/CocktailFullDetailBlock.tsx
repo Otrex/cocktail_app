@@ -75,6 +75,7 @@ export function CocktailFullDetailBlock({ drink }: Props) {
                     className="h-full w-full object-cover"
                   />
                 </IfElse>
+                {/* <small>{drink.image.attribution || "No atrribution"}</small> */}
               </div>
             </ImageZoom>
           </div>
