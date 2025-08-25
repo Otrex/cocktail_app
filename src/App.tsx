@@ -61,7 +61,7 @@ export default function App() {
 
       <section data-name="charts" className="mb-5">
         <h2 className="font-bold mb-3 text-xl">Statistics</h2>
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-col md:flex-row gap-5">
           <div className="border w-full">
             <PieCharts drinks={data || []} type="glass" />
           </div>
