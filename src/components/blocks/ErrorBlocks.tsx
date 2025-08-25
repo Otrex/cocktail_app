@@ -8,7 +8,10 @@ interface IProps {
 
 export const CocktailErrorBlock = ({ onReload }: IProps) => {
   return (
-    <div className="flex items-center py-20 justify-center">
+    <div
+      data-testid="cocktails-error"
+      className="flex items-center py-20 justify-center"
+    >
       <Alert variant="destructive" className="max-w-[25rem]">
         <AlertCircleIcon />
         <AlertTitle>Unable to load cocktails</AlertTitle>

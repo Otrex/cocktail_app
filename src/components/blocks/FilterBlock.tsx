@@ -37,6 +37,7 @@ export default function FilterBlock({
             render={(item, idx) => (
               <li key={idx}>
                 <button
+                  data-testid={`test-letter-${item}`}
                   onClick={() => setFirstLetter(item)}
                   className={cn(
                     "px-4 py-2.5 text-xs font-semibold",
@@ -77,6 +78,7 @@ export default function FilterBlock({
         <Input
           type="search"
           value={search}
+          aria-label="Search cocktails"
           wrapperClass="w-full"
           placeholder="What are you looking for? "
           onChange={(e) => setSearch(e.target.value)}
